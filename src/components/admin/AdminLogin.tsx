@@ -21,6 +21,7 @@ const AdminLogin: React.FC = () => {
       if (!success) {
         setError('Invalid email or password');
       }
+      window.location.href='/admin'
     } catch (err) {
       setError('Login failed. Please try again.');
     } finally {
@@ -99,13 +100,13 @@ const AdminLogin: React.FC = () => {
             </div>
           )}
 
-          <div className="bg-blue-50 p-3 rounded-md">
+          {/* <div className="bg-blue-50 p-3 rounded-md">
             <p className="text-sm text-blue-800">
               <strong>Admin Credentials:</strong><br />
               Email: admin@aquahome.com<br />
               Password: aqua2024admin
             </p>
-          </div>
+          </div> */}
 
           <div>
             <button
