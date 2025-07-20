@@ -20,11 +20,7 @@ const Nav = () => {
                     <li className="flex">
                         <a className="p-1 text-[#FCFCFC] cursor-pointer">How It Works</a>
                     </li>
-                    <li className="flex">
-                        <Link to="/admin" className="p-1 text-[#FCFCFC] cursor-pointer hover:text-yellow-300">
-                            Admin
-                        </Link>
-                    </li>
+                   
                 </ul>
             </div>
             <button
