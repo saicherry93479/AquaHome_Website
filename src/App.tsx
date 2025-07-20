@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { DataProvider } from './context/DataContext';
+import { DataProvider, useData } from './context/DataContext';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminPanel from './components/admin/AdminPanel';
 import Dashboard from './components/admin/Dashboard';
@@ -20,13 +20,30 @@ import Rent from "./components/Rent"
 // import SecondSection from "./components/SecondSection"
 import WhySection from "./components/WhySection"
 import FiltersShowcase from "./components/FiltersShowcase"
+import LoadingSpinner from "./components/LoadingSpinner"
 
 const MainWebsite = () => {
+  const { loading, products } = useData();
+  
+  // Filter only active products
+  const activeProducts = products.filter(product => product.isActive);
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <LoadingSpinner 
+          size="lg" 
+          text="Please wait while we load our products..." 
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="nth-[2n+4]:bg-[#FAFAFA]">
       <Nav></Nav>
       <Hero></Hero>
-      <FiltersShowcase></FiltersShowcase>
+      {activeProducts.length > 0 && <FiltersShowcase></FiltersShowcase>}
       <Plans></Plans>
       <Rent></Rent>
       {/* <SecondSection></SecondSection> */}
