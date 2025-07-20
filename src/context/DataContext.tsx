@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { db, type storage } from '../lib/firebase';
+import { db,  storage } from '../lib/firebase';
 import { 
   collection, 
   addDoc, 
