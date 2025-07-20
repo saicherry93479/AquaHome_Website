@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Nav = () => {
     return (
         <nav className="w-full sticky top-0 z-[999] shadow-sm lg:bg-primary-primary h-[60px] md:h-[64px] flex justify-between items-center px-5 xl:px-[100px] gap-3 bg-primary text-white">
