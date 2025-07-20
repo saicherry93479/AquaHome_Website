@@ -182,3 +182,158 @@ const EnquiriesManager: React.FC = () => {
 };
 
 export default EnquiriesManager;
+import React, { useState } from 'react';
+import { useData } from '../../context/DataContext';
+import { MessageSquare, Phone, Mail, Calendar, Filter } from 'lucide-react';
+import { Enquiry } from '../../types';
+
+const EnquiriesManager: React.FC = () => {
+  const { enquiries, updateEnquiryStatus, loading } = useData();
+  const [selectedStatus, setSelectedStatus] = useState<'all' | Enquiry['status']>('all');
+
+  const filteredEnquiries = selectedStatus === 'all' 
+    ? enquiries 
+    : enquiries.filter(enquiry => enquiry.status === selectedStatus);
+
+  const getStatusColor = (status: Enquiry['status']) => {
+    switch (status) {
+      case 'new': return 'bg-blue-100 text-blue-800';
+      case 'contacted': return 'bg-yellow-100 text-yellow-800';
+      case 'converted': return 'bg-green-100 text-green-800';
+      case 'lost': return 'bg-red-100 text-red-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const handleStatusChange = async (enquiryId: string, newStatus: Enquiry['status']) => {
+    try {
+      await updateEnquiryStatus(enquiryId, newStatus);
+    } catch (error) {
+      console.error('Error updating enquiry status:', error);
+      alert('Failed to update enquiry status. Please try again.');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="mb-8">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Enquiries Management</h1>
+            <p className="mt-1 text-sm text-gray-600">
+              Track and manage customer enquiries
+            </p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Filter className="h-4 w-4 text-gray-500" />
+            <select
+              value={selectedStatus}
+              onChange={(e) => setSelectedStatus(e.target.value as 'all' | Enquiry['status'])}
+              className="px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="all">All Enquiries</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="converted">Converted</option>
+              <option value="lost">Lost</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Enquiries List */}
+      <div className="bg-white shadow overflow-hidden sm:rounded-md">
+        <ul className="divide-y divide-gray-200">
+          {filteredEnquiries.map((enquiry) => (
+            <li key={enquiry.id}>
+              <div className="px-4 py-4 sm:px-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <MessageSquare className="h-6 w-6 text-gray-400" />
+                    </div>
+                    <div className="ml-4">
+                      <div className="flex items-center">
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {enquiry.name}
+                        </p>
+                        <span className={`ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(enquiry.status)}`}>
+                          {enquiry.status}
+                        </span>
+                      </div>
+                      <div className="mt-2 flex items-center text-sm text-gray-500">
+                        <Mail className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
+                        <p className="truncate">{enquiry.email}</p>
+                        <Phone className="flex-shrink-0 ml-4 mr-1.5 h-4 w-4 text-gray-400" />
+                        <p>{enquiry.phone}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <select
+                      value={enquiry.status}
+                      onChange={(e) => handleStatusChange(enquiry.id, e.target.value as Enquiry['status'])}
+                      className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="new">New</option>
+                      <option value="contacted">Contacted</option>
+                      <option value="converted">Converted</option>
+                      <option value="lost">Lost</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="mt-2">
+                  <div className="sm:flex sm:justify-between">
+                    <div className="sm:flex">
+                      <p className="flex items-center text-sm text-gray-500">
+                        Interest: <span className="ml-1 font-medium">{enquiry.interest}</span>
+                      </p>
+                    </div>
+                    <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                      <Calendar className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
+                      <p>
+                        {new Date(enquiry.createdAt).toLocaleDateString()} at{' '}
+                        {new Date(enquiry.createdAt).toLocaleTimeString()}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {enquiry.message && (
+                    <div className="mt-3">
+                      <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-md">
+                        {enquiry.message}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {filteredEnquiries.length === 0 && (
+        <div className="text-center py-12">
+          <MessageSquare className="mx-auto h-12 w-12 text-gray-400" />
+          <h3 className="mt-2 text-sm font-medium text-gray-900">No enquiries found</h3>
+          <p className="mt-1 text-sm text-gray-500">
+            {selectedStatus === 'all' 
+              ? 'No enquiries have been submitted yet.' 
+              : `No ${selectedStatus} enquiries found.`}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default EnquiriesManager;

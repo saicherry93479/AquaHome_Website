@@ -1,12 +1,14 @@
+
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
-import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Upload, Package } from 'lucide-react';
 import { Product } from '../../types';
 
 const ProductsManager: React.FC = () => {
-  const { products, addProduct, updateProduct, deleteProduct } = useData();
+  const { products, addProduct, updateProduct, deleteProduct, uploadImage, loading } = useData();
   const [showForm, setShowForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -45,7 +47,27 @@ const ProductsManager: React.FC = () => {
     setShowForm(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleImageUpload = async (file: File, isMainImage: boolean = true, index?: number) => {
+    setUploading(true);
+    try {
+      const imageUrl = await uploadImage(file, 'products');
+      
+      if (isMainImage) {
+        setFormData({ ...formData, image: imageUrl });
+      } else if (index !== undefined) {
+        const newImages = [...formData.quickViewImages];
+        newImages[index] = imageUrl;
+        setFormData({ ...formData, quickViewImages: newImages });
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image. Please try again.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const productData = {
@@ -54,13 +76,17 @@ const ProductsManager: React.FC = () => {
       quickViewImages: formData.quickViewImages.filter(img => img.trim() !== '')
     };
 
-    if (editingProduct) {
-      updateProduct(editingProduct.id, productData);
-    } else {
-      addProduct(productData);
+    try {
+      if (editingProduct) {
+        await updateProduct(editingProduct.id, productData);
+      } else {
+        await addProduct(productData);
+      }
+      resetForm();
+    } catch (error) {
+      console.error('Error saving product:', error);
+      alert('Failed to save product. Please try again.');
     }
-    
-    resetForm();
   };
 
   const handleFeatureChange = (index: number, value: string) => {
@@ -93,6 +119,25 @@ const ProductsManager: React.FC = () => {
     setFormData({ ...formData, quickViewImages: newImages });
   };
 
+  const handleDeleteProduct = async (productId: string) => {
+    if (confirm('Are you sure you want to delete this product? This will also delete all associated images.')) {
+      try {
+        await deleteProduct(productId);
+      } catch (error) {
+        console.error('Error deleting product:', error);
+        alert('Failed to delete product. Please try again.');
+      }
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="mb-8">
@@ -105,7 +150,7 @@ const ProductsManager: React.FC = () => {
           </div>
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90"
+            className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Product
@@ -128,7 +173,7 @@ const ProductsManager: React.FC = () => {
                     </h3>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-4 max-h-96 overflow-y-auto">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Product Name
@@ -138,7 +183,7 @@ const ProductsManager: React.FC = () => {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                       />
                     </div>
 
@@ -151,21 +196,46 @@ const ProductsManager: React.FC = () => {
                         rows={3}
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Main Image URL
+                        Main Image
                       </label>
-                      <input
-                        type="url"
-                        required
-                        value={formData.image}
-                        onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                      />
+                      <div className="space-y-2">
+                        <input
+                          type="url"
+                          value={formData.image}
+                          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="Enter image URL or upload below"
+                        />
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleImageUpload(file, true);
+                            }}
+                            className="hidden"
+                            id="main-image-upload"
+                          />
+                          <label
+                            htmlFor="main-image-upload"
+                            className="cursor-pointer flex items-center px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+                          >
+                            <Upload className="h-4 w-4 mr-2" />
+                            Upload Image
+                          </label>
+                          {uploading && <span className="text-sm text-gray-500">Uploading...</span>}
+                        </div>
+                        {formData.image && (
+                          <img src={formData.image} alt="Preview" className="w-20 h-20 object-cover rounded" />
+                        )}
+                      </div>
                     </div>
 
                     <div>
@@ -175,7 +245,7 @@ const ProductsManager: React.FC = () => {
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value as Product['category'] })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                       >
                         <option value="copper">Copper</option>
                         <option value="ro">RO+</option>
@@ -194,7 +264,7 @@ const ProductsManager: React.FC = () => {
                             type="text"
                             value={feature}
                             onChange={(e) => handleFeatureChange(index, e.target.value)}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter feature"
                           />
                           {formData.features.length > 1 && (
@@ -211,7 +281,7 @@ const ProductsManager: React.FC = () => {
                       <button
                         type="button"
                         onClick={addFeature}
-                        className="text-sm text-primary hover:text-primary/80"
+                        className="text-sm text-blue-600 hover:text-blue-800"
                       >
                         + Add Feature
                       </button>
@@ -222,29 +292,53 @@ const ProductsManager: React.FC = () => {
                         Quick View Images
                       </label>
                       {formData.quickViewImages.map((image, index) => (
-                        <div key={index} className="flex gap-2 mb-2">
-                          <input
-                            type="url"
-                            value={image}
-                            onChange={(e) => handleImageChange(index, e.target.value)}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                            placeholder="Enter image URL"
-                          />
-                          {formData.quickViewImages.length > 1 && (
-                            <button
-                              type="button"
-                              onClick={() => removeImage(index)}
-                              className="px-3 py-2 text-red-600 hover:text-red-800"
+                        <div key={index} className="space-y-2 mb-4 p-3 border border-gray-200 rounded">
+                          <div className="flex gap-2">
+                            <input
+                              type="url"
+                              value={image}
+                              onChange={(e) => handleImageChange(index, e.target.value)}
+                              className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                              placeholder="Enter image URL"
+                            />
+                            {formData.quickViewImages.length > 1 && (
+                              <button
+                                type="button"
+                                onClick={() => removeImage(index)}
+                                className="px-3 py-2 text-red-600 hover:text-red-800"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            )}
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) handleImageUpload(file, false, index);
+                              }}
+                              className="hidden"
+                              id={`quick-image-upload-${index}`}
+                            />
+                            <label
+                              htmlFor={`quick-image-upload-${index}`}
+                              className="cursor-pointer flex items-center px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
                             >
-                              <Trash2 className="h-4 w-4" />
-                            </button>
+                              <Upload className="h-4 w-4 mr-2" />
+                              Upload
+                            </label>
+                          </div>
+                          {image && (
+                            <img src={image} alt="Preview" className="w-16 h-16 object-cover rounded" />
                           )}
                         </div>
                       ))}
                       <button
                         type="button"
                         onClick={addImage}
-                        className="text-sm text-primary hover:text-primary/80"
+                        className="text-sm text-blue-600 hover:text-blue-800"
                       >
                         + Add Image
                       </button>
@@ -256,7 +350,7 @@ const ProductsManager: React.FC = () => {
                         id="isActive"
                         checked={formData.isActive}
                         onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="isActive" className="ml-2 block text-sm text-gray-900">
                         Active Product
@@ -268,14 +362,15 @@ const ProductsManager: React.FC = () => {
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button
                     type="submit"
-                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm"
+                    disabled={uploading}
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50"
                   >
                     {editingProduct ? 'Update' : 'Create'}
                   </button>
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Cancel
                   </button>
@@ -336,11 +431,7 @@ const ProductsManager: React.FC = () => {
                     {product.isActive ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                   <button
-                    onClick={() => {
-                      if (confirm('Are you sure you want to delete this product?')) {
-                        deleteProduct(product.id);
-                      }
-                    }}
+                    onClick={() => handleDeleteProduct(product.id)}
                     className="p-2 text-red-600 hover:text-red-800"
                     title="Delete"
                   >
@@ -364,7 +455,7 @@ const ProductsManager: React.FC = () => {
           <div className="mt-6">
             <button
               onClick={() => setShowForm(true)}
-              className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90"
+              className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Product

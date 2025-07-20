@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { LogIn, Eye, EyeOff } from 'lucide-react';
@@ -32,11 +33,7 @@ const AdminLogin: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <div className="mx-auto h-12 w-auto flex justify-center">
-            <img
-              src="https://drinkprime.in/app/assets/DpLogoFooter-production.svg"
-              alt="DrinkPrime"
-              className="h-12"
-            />
+            <h1 className="text-2xl font-bold text-blue-600">AquaHome</h1>
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Admin Login
@@ -60,8 +57,8 @@ const AdminLogin: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
-                placeholder="admin@drinkprime.com"
+                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="admin@aquahome.com"
               />
             </div>
             
@@ -78,7 +75,7 @@ const AdminLogin: React.FC = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
+                  className="appearance-none relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                 />
                 <button
@@ -104,9 +101,9 @@ const AdminLogin: React.FC = () => {
 
           <div className="bg-blue-50 p-3 rounded-md">
             <p className="text-sm text-blue-800">
-              <strong>Demo Credentials:</strong><br />
-              Email: admin@drinkprime.com<br />
-              Password: admin123
+              <strong>Admin Credentials:</strong><br />
+              Email: admin@aquahome.com<br />
+              Password: aqua2024admin
             </p>
           </div>
 
@@ -114,7 +111,7 @@ const AdminLogin: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <LogIn className="h-5 w-5 text-white group-hover:text-white" />
