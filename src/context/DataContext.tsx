@@ -62,7 +62,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         ...doc.data()
       })) as Product[];
       setProducts(productsData);
-      setLoading(false);
+      setTimeout(()=>{
+        setLoading(false);
+      },1000)
     });
 
     return () => {

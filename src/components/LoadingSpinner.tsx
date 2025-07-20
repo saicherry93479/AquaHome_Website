@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface LoadingSpinnerProps {
@@ -7,27 +6,61 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ 
-  size = 'md', 
-  text = 'Loading...', 
-  className = '' 
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
+  size = 'md',
+  text = 'Loading...',
+  className = ''
 }) => {
   const sizeClasses = {
-    sm: 'h-8 w-8',
-    md: 'h-16 w-16',
-    lg: 'h-24 w-24'
+    sm: 'w-6 h-6',
+    md: 'w-11 h-11', 
+    lg: 'w-16 h-16'
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center ${className}`}>
-      <div className={`animate-spin rounded-full border-4 border-blue-600 border-t-transparent ${sizeClasses[size]} mb-4`}></div>
-      {text && (
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading AquaHome</h2>
-          <p className="text-gray-600">{text}</p>
-        </div>
-      )}
-    </div>
+    <>
+      <style jsx>{`
+        .loading-container {
+          background-color: #4548b9;
+          min-height: 100vh;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .custom-loader {
+          aspect-ratio: 1;
+          --c: no-repeat linear-gradient(white calc(50% - 10px), transparent 0 calc(50% + 10px), white 0);
+          background: 
+            var(--c) 0% 100%,
+            var(--c) 50% 100%,
+            var(--c) 100% 100%;
+          background-size: 20% calc(200% + 20px);
+          animation: loader-animation 1s infinite linear;
+        }
+        
+        @keyframes loader-animation {
+          33%  { background-position: 0% 50%, 50% 100%, 100% 100%; }
+          50%  { background-position: 0% 0%, 50% 50%, 100% 100%; }
+          66%  { background-position: 0% 0%, 50% 0%, 100% 50%; }
+          100% { background-position: 0% 0%, 50% 0%, 100% 0%; }
+        }
+        
+        .aquahome-text {
+          color: white;
+          font-size: 24px;
+          font-weight: 600;
+          margin-top: 16px;
+        }
+      `}</style>
+      
+      <div className="loading-container">
+        <div className={`custom-loader ${sizeClasses[size]}`}></div>
+        <div className="aquahome-text">AquaHome</div>
+      </div>
+    </>
   );
 };
 
