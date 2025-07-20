@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { 
   LayoutDashboard, 
@@ -12,17 +13,17 @@ import {
 interface AdminLayoutProps {
   children: React.ReactNode;
   currentPage: 'dashboard' | 'enquiries' | 'products';
-  onPageChange: (page: 'dashboard' | 'enquiries' | 'products') => void;
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage, onPageChange }) => {
+const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
   const { logout } = useAuth();
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navigation = [
-    { name: 'Dashboard', page: 'dashboard' as const, icon: LayoutDashboard },
-    { name: 'Enquiries', page: 'enquiries' as const, icon: MessageSquare },
-    { name: 'Products', page: 'products' as const, icon: Package },
+    { name: 'Dashboard', page: 'dashboard' as const, path: '/admin', icon: LayoutDashboard },
+    { name: 'Enquiries', page: 'enquiries' as const, path: '/admin/enquiries', icon: MessageSquare },
+    { name: 'Products', page: 'products' as const, path: '/admin/products', icon: Package },
   ];
 
   return (
@@ -54,7 +55,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage, onPage
                   <button
                     key={item.name}
                     onClick={() => {
-                      onPageChange(item.page);
+                      navigate(item.path);
                       setSidebarOpen(false);
                     }}
                     className={`${
@@ -99,7 +100,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage, onPage
                 return (
                   <button
                     key={item.name}
-                    onClick={() => onPageChange(item.page)}
+                    onClick={() => navigate(item.path)}
                     className={`${
                       currentPage === item.page
                         ? 'bg-primary text-white'

@@ -82,7 +82,7 @@ const Plans = () => {
     };
 
     return (
-        <div>
+        <div className='bg-[#FAFAFA]'>
             <section
                 className="md:py-[100px] px-3 lg:px-6 [@media(min-width:1400px)]:px-[100px] py-[60px]"
                 id="plan_section"
@@ -99,7 +99,7 @@ const Plans = () => {
 
                 <div className="mt-10 md:mt-8">
                     <div
-                        className="flex gap-2 lg:gap-6 justify-center -lg:sticky -md:top-[55px] -md:z-[100] pt-2 pb-3 bg-white"
+                        className="flex gap-2 lg:gap-6 justify-center -lg:sticky -md:top-[55px] -md:z-[100] pt-2 pb-3 "
                         id="model-buttons-observer"
                     >
                         <div className="w-full grid grid-cols-3 md:flex justify-center items-end gap-3 md:gap-4 px-1 sticky top-0">

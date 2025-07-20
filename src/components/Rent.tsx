@@ -2,7 +2,7 @@
 
 const Rent = () => {
     return (
-        <div className="px-4 py-[60px] md:p-[100px] bg-[#FAFAFA]">
+        <div className="px-4 py-[60px] md:p-[100px] ">
             <h2 className="text-2xl md:text-[40px] font-bold text-primary md:mb-5 md:text-center capitalize">
                 Rent drink prime.
             </h2>

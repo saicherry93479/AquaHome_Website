@@ -1,9 +1,14 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminPanel from './components/admin/AdminPanel';
+import Dashboard from './components/admin/Dashboard';
+import EnquiriesManager from './components/admin/EnquiriesManager';
+import ProductsManager from './components/admin/ProductsManager';
+import ProductForm from './components/admin/ProductForm';
 
 // Main website components
 import Footer from "./components/Footer"
@@ -12,10 +17,9 @@ import How from "./components/How"
 import Nav from "./components/Nav"
 import Plans from "./components/Plans"
 import Rent from "./components/Rent"
-import SecondSection from "./components/SecondSection"
+// import SecondSection from "./components/SecondSection"
 import WhySection from "./components/WhySection"
 import FiltersShowcase from "./components/FiltersShowcase"
-
 
 const MainWebsite = () => {
   return (
@@ -23,10 +27,11 @@ const MainWebsite = () => {
       <Nav></Nav>
       <Hero></Hero>
       <FiltersShowcase></FiltersShowcase>
-      <SecondSection></SecondSection>
-      <WhySection></WhySection>
       <Plans></Plans>
       <Rent></Rent>
+      {/* <SecondSection></SecondSection> */}
+      <WhySection></WhySection>
+     
       <How></How>
       <Footer></Footer>
     </div>
@@ -42,6 +47,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   
   return user ? <>{children}</> : <Navigate to="/admin/login" />;
 };
+
 const App = () => {
   return (
     <AuthProvider>
@@ -51,10 +57,52 @@ const App = () => {
             <Route path="/" element={<MainWebsite />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route 
-              path="/admin/*" 
+              path="/admin" 
               element={
                 <ProtectedRoute>
-                  <AdminPanel />
+                  <AdminPanel>
+                    <Dashboard />
+                  </AdminPanel>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/enquiries" 
+              element={
+                <ProtectedRoute>
+                  <AdminPanel>
+                    <EnquiriesManager />
+                  </AdminPanel>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/products" 
+              element={
+                <ProtectedRoute>
+                  <AdminPanel>
+                    <ProductsManager />
+                  </AdminPanel>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/products/add" 
+              element={
+                <ProtectedRoute>
+                  <AdminPanel>
+                    <ProductForm />
+                  </AdminPanel>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/products/:id" 
+              element={
+                <ProtectedRoute>
+                  <AdminPanel>
+                    <ProductForm />
+                  </AdminPanel>
                 </ProtectedRoute>
               } 
             />
