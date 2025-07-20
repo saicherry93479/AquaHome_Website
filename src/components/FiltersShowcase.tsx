@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useData } from '../context/DataContext';
+import type { Product } from '../types';
 
 const FiltersShowcase = () => {
   const { products } = useData();
@@ -10,7 +11,10 @@ const FiltersShowcase = () => {
   // Filter only active products
   const activeProducts = products.filter(product => product.isActive);
 
-  console.log('products ',products)
+  // Early return if no active products
+  if (activeProducts.length === 0) {
+    return null;
+  }
 
   const openQuickView = (product: any) => {
     setSelectedProduct(product);
