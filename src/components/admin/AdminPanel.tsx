@@ -1,34 +1,31 @@
-import React, { useState } from 'react';
+
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import AdminLayout from './AdminLayout';
-import Dashboard from './Dashboard';
-import EnquiriesManager from './EnquiriesManager';
-import ProductsManager from './ProductsManager';
 
-const AdminPanel: React.FC = () => {
+interface AdminPanelProps {
+  children: React.ReactNode;
+}
+
+const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
   const { user } = useAuth();
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'enquiries' | 'products'>('dashboard');
+  const location = useLocation();
 
   if (!user) {
     return null;
   }
 
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case 'dashboard':
-        return <Dashboard />;
-      case 'enquiries':
-        return <EnquiriesManager />;
-      case 'products':
-        return <ProductsManager />;
-      default:
-        return <Dashboard />;
-    }
+  const getCurrentPage = (): 'dashboard' | 'enquiries' | 'products' => {
+    const path = location.pathname;
+    if (path.includes('/enquiries')) return 'enquiries';
+    if (path.includes('/products')) return 'products';
+    return 'dashboard';
   };
 
   return (
-    <AdminLayout currentPage={currentPage} onPageChange={setCurrentPage}>
-      {renderCurrentPage()}
+    <AdminLayout currentPage={getCurrentPage()}>
+      {children}
     </AdminLayout>
   );
 };
