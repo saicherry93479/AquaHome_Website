@@ -7,6 +7,7 @@ import Plans from "./components/Plans"
 import Rent from "./components/Rent"
 import SecondSection from "./components/SecondSection"
 import WhySection from "./components/WhySection"
+import FiltersShowcase from "./components/FiltersShowcase"
 
 
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
     <div className="nth-[2n+4]:bg-[#FAFAFA]">
       <Nav></Nav>
       <Hero></Hero>
-     
+      <FiltersShowcase></FiltersShowcase>
       <SecondSection></SecondSection>
       <WhySection></WhySection>
       <Plans></Plans>
