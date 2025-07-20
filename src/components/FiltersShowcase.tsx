@@ -1,70 +1,15 @@
 import { useState } from 'react';
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  features: string[];
-  quickViewImages: string[];
-}
+import { useData } from '../context/DataContext';
 
 const FiltersShowcase = () => {
+  const { products } = useData();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "DrinkPrime Copper",
-      description: "Advanced copper-infused water purification with natural antimicrobial properties",
-      image: "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=400",
-      features: ["Copper Infusion", "RO + UV Technology", "7-Stage Purification", "Smart Monitoring"],
-      quickViewImages: [
-        "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=600"
-      ]
-    },
-    {
-      id: 2,
-      name: "DrinkPrime RO+",
-      description: "Premium reverse osmosis system with advanced filtration technology",
-      image: "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400",
-      features: ["RO Technology", "UV Sterilization", "TDS Control", "Mineral Retention"],
-      quickViewImages: [
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=600"
-      ]
-    },
-    {
-      id: 3,
-      name: "DrinkPrime Alkaline",
-      description: "Alkaline water purifier for enhanced hydration and health benefits",
-      image: "https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=400",
-      features: ["Alkaline Enhancement", "pH Balance", "Antioxidant Properties", "Mineral Boost"],
-      quickViewImages: [
-        "https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600"
-      ]
-    },
-    {
-      id: 4,
-      name: "DrinkPrime Smart",
-      description: "IoT-enabled smart water purifier with app connectivity and monitoring",
-      image: "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=400",
-      features: ["IoT Connectivity", "App Control", "Real-time Monitoring", "Auto Maintenance"],
-      quickViewImages: [
-        "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600"
-      ]
-    }
-  ];
+  // Filter only active products
+  const activeProducts = products.filter(product => product.isActive);
 
-  const openQuickView = (product: Product) => {
+  const openQuickView = (product: any) => {
     setSelectedProduct(product);
     setIsQuickViewOpen(true);
     document.body.style.overflow = 'hidden';
@@ -89,7 +34,7 @@ const FiltersShowcase = () => {
         </div>
 
         <div className="mt-[60px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {activeProducts.map((product) => (
             <div
               key={product.id}
               className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
