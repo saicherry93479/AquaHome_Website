@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -7,14 +7,14 @@ const ContactForm = () => {
         city: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
         // Handle form submission here

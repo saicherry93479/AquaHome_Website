@@ -1,4 +1,4 @@
-import BottomSection from "./components/BottomSection"
+// import BottomSection from "./components/BottomSection"
 import Footer from "./components/Footer"
 import Hero from "./components/Hero"
 import How from "./components/How"

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Plans = () => {
     const [selectedPlan, setSelectedPlan] = useState('copper');
 
-    const planData = {
+    const planData:any = {
         copper: {
             name: 'DrinkPrime Copper',
             plans: [
@@ -77,7 +77,7 @@ const Plans = () => {
 
     const currentPlans = planData[selectedPlan];
 
-    const handlePlanSelect = (plan) => {
+    const handlePlanSelect = (plan:string) => {
         setSelectedPlan(plan);
     };
 
@@ -159,7 +159,7 @@ const Plans = () => {
 
                 <div>
                     <ul className="flex flex-wrap items-center justify-center !gap-y-12 gap-12 md:gap-6 px-4 mt-16">
-                        {currentPlans.plans.map((plan, index) => (
+                        {currentPlans.plans.map((plan:any, index:any) => (
                             <ul key={index} className="relative">
                                 <div className={`flex !capitalize items-start justify-center gap-1 text-[13px] text-primary w-full rounded-t-3xl p-1 z-10 h-[100px] absolute -top-[16%] font-bold ${
                                     index === 0 ? 'bg-[#EEF1FF]' : 'bg-gradient-to-r from-[#F8F0FF] via-[#F2F6FF] to-[#E4F7FF]'
