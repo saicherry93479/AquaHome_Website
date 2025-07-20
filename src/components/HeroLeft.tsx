@@ -1,6 +1,8 @@
 import  { useState } from 'react';
+import { useData } from '../context/DataContext';
 
 const ContactForm = () => {
+    const { addEnquiry } = useData();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -16,8 +18,21 @@ const ContactForm = () => {
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Handle form submission here
+        
+        // Add enquiry to the system
+        addEnquiry({
+            name: formData.name,
+            phone: formData.phone,
+            city: formData.city
+        });
+        
+        // Reset form
+        setFormData({
+            name: '',
+            phone: '',
+            city: ''
+        });
+        
         alert('Thank you for getting in touch! We\'ll contact you soon.');
     };
 
