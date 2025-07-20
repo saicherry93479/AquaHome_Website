@@ -3,7 +3,7 @@ import { useState } from 'react';
 const Plans = () => {
     const [selectedPlan, setSelectedPlan] = useState('copper');
 
-    const planData:any = {
+    const planData = {
         copper: {
             name: 'DrinkPrime Copper',
             plans: [
@@ -77,7 +77,7 @@ const Plans = () => {
 
     const currentPlans = planData[selectedPlan];
 
-    const handlePlanSelect = (plan:string) => {
+    const handlePlanSelect = (plan) => {
         setSelectedPlan(plan);
     };
 
@@ -96,74 +96,74 @@ const Plans = () => {
                         Subscribe to DrinkPrime with easy to choose plans
                     </p>
                 </div>
-                
+
                 <div className="mt-10 md:mt-8">
                     <div
                         className="flex gap-2 lg:gap-6 justify-center -lg:sticky -md:top-[55px] -md:z-[100] pt-2 pb-3 bg-white"
                         id="model-buttons-observer"
                     >
-                        <div className="w-full flex justify-center items-end gap-3 md:gap-4 px-1 sticky top-0">
-                            <div className="relative basis-1/3 max-w-[120px] md:max-w-[260px] grow">
+                        <div className="w-full grid grid-cols-3 md:flex justify-center items-end gap-3 md:gap-4 px-1 sticky top-0">
+                            {/* Copper Plan */}
+                            <div className="relative w-full md:max-w-[260px]">
                                 <button
                                     type="button"
                                     onClick={() => handlePlanSelect('copper')}
-                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full font-semibold text-sm md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] ${
-                                        selectedPlan === 'copper'
+                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full h-[60px] md:h-auto font-semibold text-xs leading-tight md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] flex items-center justify-center ${selectedPlan === 'copper'
                                             ? '!bg-[linear-gradient(180deg,_#A45834_0%,_#C57947_40%,_#984D29_100%)] !text-white !font-bold !border-[#984D29]'
                                             : 'text-[#14142B] bg-[#F7F7FC]'
-                                    }`}
+                                        }`}
                                 >
-                                    DrinkPrime Copper
+                                    <span className="text-center">DrinkPrime Copper</span>
                                 </button>
                                 {selectedPlan === 'copper' && (
-                                    <div className="absolute left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#984D29]" />
+                                    <div className="absolute hidden md:block left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#984D29]" />
                                 )}
                             </div>
-                            
-                            <div className="relative basis-1/3 max-w-[120px] md:max-w-[260px] grow">
+
+                            {/* RO Plan */}
+                            <div className="relative w-full md:max-w-[260px]">
                                 <button
                                     type="button"
                                     onClick={() => handlePlanSelect('ro')}
-                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full font-semibold text-sm md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] whitespace-pre md:whitespace-normal ${
-                                        selectedPlan === 'ro'
+                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full h-[60px] md:h-auto font-semibold text-xs leading-tight md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] flex items-center justify-center ${selectedPlan === 'ro'
                                             ? '!bg-[linear-gradient(180deg,_#058EFA_0%,_#4FA8FF_40%,_#0066CC_100%)] !text-white !font-bold !border-[#0066CC]'
                                             : 'text-[#14142B] bg-[#F7F7FC]'
-                                    }`}
+                                        }`}
                                 >
-                                    DrinkPrime RO+
+                                    <span className="text-center">DrinkPrime RO+</span>
                                 </button>
                                 {selectedPlan === 'ro' && (
-                                    <div className="absolute left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#0066CC]" />
+                                    <div className="absolute hidden md:block left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#0066CC]" />
                                 )}
                             </div>
-                            
-                            <div className="relative basis-1/3 max-w-[120px] md:max-w-[260px] grow">
+
+                            {/* Alkaline Plan */}
+                            <div className="relative w-full md:max-w-[260px]">
                                 <button
                                     type="button"
                                     onClick={() => handlePlanSelect('alkaline')}
-                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full font-semibold text-sm md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] ${
-                                        selectedPlan === 'alkaline'
+                                    className={`py-1.5 md:py-[22px] border-[1.5px] border-[#4E4B66] w-full h-[60px] md:h-auto font-semibold text-xs leading-tight md:text-[20px] rounded-[8px] md:rounded-2xl transition-all duration-300 focus-visible:!scale-100 hover:!scale-100 relative z-[1] flex items-center justify-center ${selectedPlan === 'alkaline'
                                             ? '!bg-[linear-gradient(180deg,_#22C55E_0%,_#4ADE80_40%,_#16A34A_100%)] !text-white !font-bold !border-[#16A34A]'
                                             : 'text-[#14142B] bg-[#F7F7FC]'
-                                    }`}
+                                        }`}
                                 >
-                                    DrinkPrime Alkaline
+                                    <span className="text-center">DrinkPrime Alkaline</span>
                                 </button>
                                 {selectedPlan === 'alkaline' && (
-                                    <div className="absolute left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#16A34A]" />
+                                    <div className="absolute hidden md:block left-1/2 -translate-x-1/2 border-8 w-0 h-0 border-x-transparent border-b-transparent !border-t-[#16A34A]" />
                                 )}
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div>
                     <ul className="flex flex-wrap items-center justify-center !gap-y-12 gap-12 md:gap-6 px-4 mt-16">
-                        {currentPlans.plans.map((plan:any, index:any) => (
+                        {currentPlans.plans.map((plan, index) => (
                             <ul key={index} className="relative">
-                                <div className={`flex !capitalize items-start justify-center gap-1 text-[13px] text-primary w-full rounded-t-3xl p-1 z-10 h-[100px] absolute -top-[16%] font-bold ${
-                                    index === 0 ? 'bg-[#EEF1FF]' : 'bg-gradient-to-r from-[#F8F0FF] via-[#F2F6FF] to-[#E4F7FF]'
-                                }`}>
+                                <div className={`flex !capitalize items-start justify-center gap-1 text-[13px] text-primary w-full rounded-t-3xl p-1 z-10 h-[100px] absolute -top-[16%] font-bold ${index === 0 ? 'bg-[#EEF1FF]' : 'bg-gradient-to-r from-[#F8F0FF] via-[#F2F6FF] to-[#E4F7FF]'
+                                    }`}>
                                     <img
                                         src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='23'%20height='20'%20viewBox='0%200%2023%2020'%20fill='none'%3e%3cpath%20d='M14.7458%2010C14.7458%2010.345%2014.4449%2010.625%2014.0742%2010.625H13.0452C11.0204%2010.625%209.37267%2012.1583%209.37267%2014.0425V15C9.37267%2015.345%209.07177%2015.625%208.70103%2015.625C8.33028%2015.625%208.02938%2015.345%208.02938%2015V14.0425C8.02938%2012.1583%206.38162%2010.625%204.35685%2010.625H3.32789C2.95715%2010.625%202.65625%2010.345%202.65625%2010C2.65625%209.655%202.95715%209.375%203.32789%209.375H4.35685C6.38162%209.375%208.02938%207.8425%208.02938%205.9575V5C8.02938%204.655%208.33028%204.375%208.70103%204.375C9.07177%204.375%209.37267%204.655%209.37267%205V5.9575C9.37267%207.84167%2011.0204%209.375%2013.0452%209.375H14.0742C14.4449%209.375%2014.7458%209.655%2014.7458%2010Z'%20fill='%23FFC107'/%3e%3cpath%20d='M18.776%205.83366C18.776%206.17866%2018.4751%206.45866%2018.1043%206.45866H17.7613C17.3324%206.45866%2016.9849%206.78283%2016.9849%207.18116V7.50033C16.9849%207.84533%2016.684%208.12533%2016.3133%208.12533C15.9425%208.12533%2015.6416%207.84533%2015.6416%207.50033V7.18116C15.6416%206.78283%2015.2933%206.45866%2014.8652%206.45866H14.5222C14.1515%206.45866%2013.8506%206.17866%2013.8506%205.83366C13.8506%205.48866%2014.1515%205.20866%2014.5222%205.20866H14.8652C15.2942%205.20866%2015.6416%204.88449%2015.6416%204.48616V4.16699C15.6416%203.82199%2015.9425%203.54199%2016.3133%203.54199C16.684%203.54199%2016.9849%203.82199%2016.9849%204.16699V4.48616C16.9849%204.88449%2017.3333%205.20866%2017.7613%205.20866H18.1043C18.4751%205.20866%2018.776%205.48866%2018.776%205.83366Z'%20fill='%23FED800'/%3e%3cpath%20d='M20.1188%2014.167C20.1188%2014.512%2019.8179%2014.792%2019.4471%2014.792H18.9331C18.1056%2014.792%2017.4322%2015.4187%2017.4322%2016.1887V16.667C17.4322%2017.012%2017.1313%2017.292%2016.7606%2017.292C16.3898%2017.292%2016.0889%2017.012%2016.0889%2016.667V16.1887C16.0889%2015.4187%2015.4155%2014.792%2014.588%2014.792H14.074C13.7032%2014.792%2013.4023%2014.512%2013.4023%2014.167C13.4023%2013.822%2013.7032%2013.542%2014.074%2013.542H14.588C15.4155%2013.542%2016.0889%2012.9153%2016.0889%2012.1453V11.667C16.0889%2011.322%2016.3898%2011.042%2016.7606%2011.042C17.1313%2011.042%2017.4322%2011.322%2017.4322%2011.667V12.1453C17.4322%2012.9153%2018.1056%2013.542%2018.9331%2013.542H19.4471C19.8179%2013.542%2020.1188%2013.822%2020.1188%2014.167Z'%20fill='%23FED800'/%3e%3c/svg%3e"
                                         alt="icon"
@@ -194,7 +194,7 @@ const Plans = () => {
                                             <span>{plan.discount}</span>% discount
                                         </h3>
                                         <div className="col-span-2 -mx-4 -mb-3 border-0 py-4 rounded-b-3xl text-xs text-center font-medium"
-                                             style={{ backgroundColor: plan.bgColor }}>
+                                            style={{ backgroundColor: plan.bgColor }}>
                                             You're saving <span className="font-bold">{plan.savings}</span> with
                                             this plan
                                         </div>
