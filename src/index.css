@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+.bg-primary{
+  background-color: #4548b9;
+}
+
+.css-hero-background-img {
+  background: url(https://drinkprime.in/app/assets/hero_section_bg_img_desktop-production.webp);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.css-hero-background-left-img_black {
+  background: url(https://drinkprime.in/app/assets/hero_banner_img_left_section_black-production.webp);
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
