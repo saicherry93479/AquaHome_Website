@@ -1,11 +1,12 @@
-
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
 import { Plus, Edit, Trash2, Eye, EyeOff, Upload, Package } from 'lucide-react';
 import { Product } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 const ProductsManager: React.FC = () => {
-  const { products, addProduct, updateProduct, deleteProduct, uploadImage, loading } = useData();
+  const { products, deleteProduct, loading } = useData();
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -51,7 +52,7 @@ const ProductsManager: React.FC = () => {
     setUploading(true);
     try {
       const imageUrl = await uploadImage(file, 'products');
-      
+
       if (isMainImage) {
         setFormData({ ...formData, image: imageUrl });
       } else if (index !== undefined) {
@@ -69,7 +70,7 @@ const ProductsManager: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const productData = {
       ...formData,
       features: formData.features.filter(f => f.trim() !== ''),
@@ -163,7 +164,7 @@ const ProductsManager: React.FC = () => {
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={resetForm} />
-            
+
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
               <form onSubmit={handleSubmit}>
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -172,7 +173,7 @@ const ProductsManager: React.FC = () => {
                       {editingProduct ? 'Edit Product' : 'Add New Product'}
                     </h3>
                   </div>
-                  
+
                   <div className="space-y-4 max-h-96 overflow-y-auto">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -358,7 +359,7 @@ const ProductsManager: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button
                     type="submit"
@@ -403,17 +404,17 @@ const ProductsManager: React.FC = () => {
                 )}
               </div>
             </div>
-            
+
             <div className="p-4">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.name}</h3>
               <p className="text-sm text-gray-600 mb-3 line-clamp-2">{product.description}</p>
-              
+
               <div className="mb-3">
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {product.category}
                 </span>
               </div>
-              
+
               <div className="flex justify-between items-center">
                 <div className="flex gap-2">
                   <button
