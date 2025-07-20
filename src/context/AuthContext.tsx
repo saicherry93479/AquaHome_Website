@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types';
 
@@ -32,11 +33,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Simple demo authentication - in real app, this would be an API call
-    if (email === 'admin@drinkprime.com' && password === 'admin123') {
+    // Static credentials for single admin user
+    if (email === 'admin@aquahome.com' && password === 'aqua2024admin') {
       const adminUser: User = {
         id: '1',
-        email: 'admin@drinkprime.com',
+        email: 'admin@aquahome.com',
         role: 'admin'
       };
       setUser(adminUser);
