@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
 import { Plus, Edit, Trash2, Eye, EyeOff, Upload, Package } from 'lucide-react';
-import { Product } from '../../types';
+import type { Product } from '../../types';
 import { useNavigate } from 'react-router-dom';
 
 const ProductsManager: React.FC = () => {

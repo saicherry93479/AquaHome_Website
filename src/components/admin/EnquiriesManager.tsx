@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
-import { Enquiry } from '../../types';
+import type { Enquiry } from '../../types';
 import { 
   MessageSquare, 
   Mail, 

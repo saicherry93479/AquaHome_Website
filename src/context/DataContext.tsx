@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { db, storage } from '../lib/firebase';
+import { db, type storage } from '../lib/firebase';
 import { 
   collection, 
   addDoc, 
@@ -13,7 +13,7 @@ import {
   onSnapshot 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { Product, Enquiry } from '../types';
+import type { Product, Enquiry } from '../types';
 
 interface DataContextType {
   enquiries: Enquiry[];
