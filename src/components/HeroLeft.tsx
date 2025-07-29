@@ -49,7 +49,7 @@ const ContactForm = () => {
                         <span className="whitespace-nowrap">solutions</span>
                     </h3>
                     
-                    <div className="flex gap-1.5 justify-center items-center mb-6 hidden">
+                    <div className=" gap-1.5 justify-center items-center mb-6 hidden">
                         <svg
                             width="18"
                             height="18"

@@ -27,7 +27,7 @@ import CancellationRefundPolicy from './components/CancellationRefundPolicy';
 import FiltersShowcaseSample from './components/FilterShowcaseSample';
 
 const MainWebsite = () => {
-  const { loading, products } = useData();
+  const { loading } = useData();
   
   // Filter only active products
   // const activeProducts = products.filter(product => product.isActive);
