@@ -19,7 +19,7 @@ import Plans from "./components/Plans"
 import Rent from "./components/Rent"
 // import SecondSection from "./components/SecondSection"
 import WhySection from "./components/WhySection"
-import FiltersShowcase from "./components/FiltersShowcase"
+// import FiltersShowcase from "./components/FiltersShowcase"
 import LoadingSpinner from "./components/LoadingSpinner"
 import PrivacyPolicies from './components/PrivacyPolicies';
 import TermsConditions from './components/TermsConditions';
