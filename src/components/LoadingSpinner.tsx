@@ -13,7 +13,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 }) => {
   const sizeClasses = {
     sm: 'w-6 h-6',
-    md: 'w-11 h-11', 
+    md: 'w-11 h-11',
     lg: 'w-16 h-16'
   };
 
@@ -55,10 +55,12 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           margin-top: 16px;
         }
       `}</style>
-      
+
       <div className="loading-container">
         <div className={`custom-loader ${sizeClasses[size]}`}></div>
-        <div className="aquahome-text">AquaHome</div>
+        <h1 className="text-2xl mt-4 text-white md:text-3xl font-bold" style={{
+          fontFamily: 'Anta'
+        }}>AquaHome</h1>
       </div>
     </>
   );
