@@ -3,11 +3,10 @@ const Footer = () => {
     return (
         <footer className="py-[4rem] px-[1rem] flex flex-col lg:flex-row lg:justify-start lg:gap-[6rem] md:px-[100px] bg-primary">
             <div className="md:max-w-[290px]">
-                <a href="http://drinkprime.in">
-                    <img
-                        src="https://drinkprime.in/app/assets/DpLogoFooter-production.svg"
-                        alt="AquaHome logo"
-                    />
+                <a href="https://www.aquahomewaterpurifiers.com/" className="cursor-pointer">
+                    <h1 className="text-2xl text-white md:text-3xl font-bold" style={{
+                        fontFamily: 'Anta'
+                    }}>AquaHome</h1>
                 </a>
                 <h3 className="font-bold text-xs leading-[20px] tracking-[1%] text-white mt-3">
                     Smart Purifiers on Rent. Free Maintenance for Life.
@@ -17,7 +16,7 @@ const Footer = () => {
                 </p>
                 <div className="hidden lg:block mt-[86px] md:max-w-[265px]">
                     <div className="flex items-center gap-4">
-                       <p className="text-white">Contact Us on</p>
+                        <p className="text-white">Contact Us on</p>
                         <a href="https://wa.me/919494739090"
                             target="_blank"
                             rel="noopener noreferrer">
@@ -31,7 +30,7 @@ const Footer = () => {
                     </div>
 
                     <p className="text-white mt-6 text-sm font-medium text-center md:text-left leading-[20px] mb-5">
-                        © 2025 AquaHomr. All rights reserved.
+                        © 2025 AquaHome. All rights reserved.
                     </p>
                 </div>
             </div>

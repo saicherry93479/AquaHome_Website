@@ -4,17 +4,15 @@ const Nav = () => {
     return (
         <nav className="w-full sticky top-0 z-[999] shadow-sm lg:bg-primary-primary h-[60px] md:h-[64px] flex justify-between items-center px-5 xl:px-[100px] gap-3 bg-primary text-white">
             <div>
-                <a href="https://drinkprime.in/" className="cursor-pointer">
-                    <img
-                        src="https://drinkprime.in/app/assets/DPLogoHeader_white-production.svg"
-                        className="w-[140px] h-[32px]"
-                        alt="logo"
-                    />
+                <a href="https://www.aquahomewaterpurifiers.com/" className="cursor-pointer">
+                    <h1 className="text-2xl text-white md:text-3xl font-bold" style={{
+                        fontFamily: 'Anta'
+                    }}>AquaHome</h1>
                 </a>
             </div>
             <div className="flex justify-between">
                 <ul className=" gap-5 text-offWhite font-medium hidden lg:flex">
-                <li className="flex">
+                    <li className="flex">
                         <a href="#products" className="p-1 text-[#FCFCFC] cursor-pointer">Products</a>
                     </li>
                     <li className="flex">
@@ -23,7 +21,7 @@ const Nav = () => {
                     <li className="flex">
                         <a href="#how-it-works" className="p-1 text-[#FCFCFC] cursor-pointer">How It Works</a>
                     </li>
-                   
+
                 </ul>
             </div>
             <button
