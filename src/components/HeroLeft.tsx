@@ -37,7 +37,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="grow mx-auto lg:pl-6 py-8">
+        <div id='betouch' className="grow mx-auto lg:pl-6 py-8">
             <div className="px-4 md:p-0">
                 <div className="-lg:w-full max-w-[480px] flex flex-col justify-center items-center rounded-2xl my-4 md:mt-10 lg:mr-8 px-4 py-6 md:p-5 bg-[#EEF1FF] ">
                     <h2 className="text-[#4548b9] capitalize !text-xl lg:!text-2xl font-bold mb-2">

@@ -3,6 +3,7 @@
 * {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
+  scroll-behavior: smooth;
 }
 .bg-primary{
   background-color: #4548b9;

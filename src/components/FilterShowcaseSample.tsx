@@ -12,7 +12,7 @@ const FiltersShowcaseSample = () => {
     ];
 
     return (
-        <section className="py-[60px] md:py-[100px] px-4 md:px-[100px] bg-white">
+        <section id='products' className="py-[60px] md:py-[100px] px-4 md:px-[100px] bg-white">
             <div className="text-left md:text-center">
                 <h2 className="text-2xl md:text-4xl font-semibold capitalize lg:text-[40px] text-black">
                     Our Premium Water Filters

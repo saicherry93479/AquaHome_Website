@@ -14,11 +14,14 @@ const Nav = () => {
             </div>
             <div className="flex justify-between">
                 <ul className=" gap-5 text-offWhite font-medium hidden lg:flex">
-                    <li className="flex">
-                        <a className="p-1 text-[#FCFCFC] cursor-pointer">Plans</a>
+                <li className="flex">
+                        <a href="#products" className="p-1 text-[#FCFCFC] cursor-pointer">Products</a>
                     </li>
                     <li className="flex">
-                        <a className="p-1 text-[#FCFCFC] cursor-pointer">How It Works</a>
+                        <a href="#plans" className="p-1 text-[#FCFCFC] cursor-pointer">Plans</a>
+                    </li>
+                    <li className="flex">
+                        <a href="#how-it-works" className="p-1 text-[#FCFCFC] cursor-pointer">How It Works</a>
                     </li>
                    
                 </ul>

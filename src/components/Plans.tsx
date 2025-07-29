@@ -60,7 +60,7 @@ const Plans = () => {
     };
 
     return (
-        <div className='bg-[#FAFAFA]'>
+        <div id='plans' className='bg-[#FAFAFA]'>
             <section
                 className="md:py-[100px] px-3 lg:px-6 [@media(min-width:1400px)]:px-[100px] py-[60px]"
                 id="plan_section"
@@ -169,12 +169,13 @@ const Plans = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row mt-[30px] md:mt-[60px] items-center md:items-end justify-center gap-4">
-                    <button
-                        className="w-full order-2 md:order-1 max-w-[343px] md:max-w-[360px] md:py-[16px] py-[13px] rounded-[48px] border border-[#4548b9] text-[#4548b9] font-semibold text-sm md:text-xl capitalize hover:bg-[#4548b9] hover:text-white transition-all duration-300"
+                    <a
+                        href='#betouch'
+                        className="w-full flex items-center justify-center order-2 md:order-1 max-w-[343px] md:max-w-[360px] md:py-[16px] py-[13px] rounded-[48px] border border-[#4548b9] text-[#4548b9] font-semibold text-sm md:text-xl capitalize hover:bg-[#4548b9] hover:text-white transition-all duration-300"
                         type="button"
                     >
                         Get A Call Back
-                    </button>
+                    </a>
                     
                 </div>
 
