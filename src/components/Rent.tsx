@@ -9,7 +9,7 @@ const Rent = () => {
             <p className="text-2xl md:text-[40px] font-semibold md:text-center">
                 Get Safe Drinking Water At Home.
             </p>
-            <div className="mt-[60px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-x-14 md:gap-y-10">
+            <div className="mt-[60px] max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-x-14 md:gap-y-10">
 
                 <div className="flex items-center gap-4 border bg-white rounded-[20px] p-[18px]">
                     <img
