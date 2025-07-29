@@ -1,8 +1,9 @@
 import HeroLeft from "./HeroLeft"
+import HeroImage from '../assets/HeroImage.png'
 
 const Hero = () => {
     return (
-        <section className="css-hero-background-img ">
+        <section className="bg-[#FAFAFA]">
             <div className="flex flex-col lg:flex-row">
                 <div className=" lg:hidden">
                     <svg
@@ -14,7 +15,7 @@ const Hero = () => {
                         <image
                             width={1125}
                             height={750}
-                            href="https://drinkprime.in/app/assets/hero_section_img_mobile_black-production.webp"
+                            href={HeroImage}
                         />
                         <rect
                             x={390}
@@ -29,22 +30,7 @@ const Hero = () => {
                 </div>
                 <div className="lg:w-[60%] hidden lg:block css-hero-background-left-img_black">
                     <div className="max-w-[400px] mt-8 mx-auto ">
-                        <h1 title="DrinkPrime Best RO+UV water purifier on rent">
-                            <span className="invisible">
-                                DrinkPrime Best RO+UV water purifier on rent
-                            </span>
-                            <img
-                                src="https://drinkprime.in/app/assets/hero_section_text_img_desktop-production.webp"
-                                className="w-full h-full object-cover"
-                                alt="DrinkPrime Best RO+UV water purifier on rent"
-                            />
-                        </h1>
-                        <button
-                            type="button"
-                            className=" bg-primary text-white rounded-full w-[180px] py-1.5 uppercase mt-4 block mx-auto font-semibold"
-                        >
-                            Rent now
-                        </button>
+                        
                     </div>
                 </div>
                 <div className="lg:hidden">

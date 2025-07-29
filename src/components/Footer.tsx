@@ -6,15 +6,14 @@ const Footer = () => {
                 <a href="http://drinkprime.in">
                     <img
                         src="https://drinkprime.in/app/assets/DpLogoFooter-production.svg"
-                        alt="DrinkPrime logo"
+                        alt="AquaHome logo"
                     />
                 </a>
                 <h3 className="font-bold text-xs leading-[20px] tracking-[1%] text-white mt-3">
                     Smart Purifiers on Rent. Free Maintenance for Life.
                 </h3>
                 <p className="text-white mt-3 text-xs font-medium leading-[20px]">
-                    #9/A, Chukki complex, 19th Main Rd, Sector 3, HSR layout, Bengaluru,
-                    Karnataka 560102
+                    Jyothi Traders, opp. municipal office, miryalaguda road, huzurnagar - 508204
                 </p>
                 <div className="hidden lg:block mt-[86px] md:max-w-[265px]">
                     <div className="flex items-center justify-between">
@@ -59,9 +58,9 @@ const Footer = () => {
                             </button>
                         </div>
                     </div>
-                   
+
                     <p className="text-white mt-6 text-sm font-medium text-center md:text-left leading-[20px] mb-5">
-                        © 2025 DrinkPrime. All rights reserved.
+                        © 2025 AquaHomr. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -82,14 +81,9 @@ const Footer = () => {
                     >
                         How it works
                     </div>
-                    <div
-                        id="DrinkPrime Advantage"
-                        className="text-white font-medium mt-[14px] cursor-pointer block"
-                    >
-                        DrinkPrime Advantage
-                    </div>
+                    
                 </div>
-                <div>
+                {/* <div>
                     <h3 className="text-yellow text-xl font-semibold mb-[16px] cursor-pointer text-[#E0FF22]">
                         Contact Us
                     </h3>
@@ -99,21 +93,30 @@ const Footer = () => {
                     >
                         FAQs
                     </div>
-                </div>
+                </div> */}
                 <div>
                     <h3 className="text-yellow text-xl font-semibold mb-[16px] text-[#E0FF22]">Terms</h3>
-                    <div
+                    <a
+                        href="/privacypolicy"
                         id="Privacy Policy"
                         className="text-white font-medium mt-[14px] cursor-pointer block"
                     >
                         Privacy Policy
-                    </div>
-                    <div
+                    </a>
+                    <a
+                        href="/termsconditions"
                         id="Terms & conditions"
                         className="text-white font-medium mt-[14px] cursor-pointer block"
                     >
                         Terms &amp; conditions
-                    </div>
+                    </a>
+                    <a
+                        href="/cancellationrefundpoliese"
+                        id="Terms & conditions"
+                        className="text-white font-medium mt-[14px] cursor-pointer block"
+                    >
+                        Cancellation &amp; Refund
+                    </a>
                 </div>
             </div>
             <div className="w-full md:max-w-[360px] lg:hidden flex flex-col self-center mb-4">
@@ -159,9 +162,9 @@ const Footer = () => {
                         </button>
                     </div>
                 </div>
-                
+
                 <p className="text-white font-medium text-center">
-                    © 2025 DrinkPrime. All rights reserved.
+                    © 2025 AquaHome. All rights reserved.
                 </p>
             </div>
         </footer>

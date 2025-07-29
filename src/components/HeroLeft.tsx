@@ -49,7 +49,7 @@ const ContactForm = () => {
                         <span className="whitespace-nowrap">solutions</span>
                     </h3>
                     
-                    <div className="flex gap-1.5 justify-center items-center mb-6">
+                    <div className="flex gap-1.5 justify-center items-center mb-6 hidden">
                         <svg
                             width="18"
                             height="18"
@@ -63,11 +63,11 @@ const ContactForm = () => {
                                 fill="#00770C"
                             />
                         </svg>
-                        <h3 className="text-black/60 text-sm [@media(max-width:360px)]:tracking-tighter [@media(max-width:370px)]:text-[14px]">
+                        {/* <h3 className="text-black/60 text-sm [@media(max-width:360px)]:tracking-tighter [@media(max-width:370px)]:text-[14px]">
                             Trusted by{" "}
                             <span className="text-green-600 font-semibold">1 Lakh+</span> happy
                             customers
-                        </h3>
+                        </h3> */}
                     </div>
 
                     <div className="flex flex-col gap-4 w-full">

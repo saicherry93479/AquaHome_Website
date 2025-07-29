@@ -3,19 +3,14 @@ const WhySection = () => {
     return (
         <div
             className="py-[60px] md:py-[100px] md:px-[100px] px-[16px]  bg-[#FAFAFA]"
-            id="drinkprime-advantage"
+            id="AquaHome-advantage"
         >
             <div className="text-left md:text-center flex flex-col md:items-center">
                 <h2 className="text-2xl md:text-[40px] font-semibold capitalize md:leading-[50px] max-w-[900px]">
-                    Why DrinkPrime?
+                    Why AquaHome?
                 </h2>
-                <p className="text-sm text-black/60  md:text-base w-full max-w-[910px]  leading-[150%] lg:leading-[32px] mt-3 md:mt-4 !max-w-[920px]">
-                    Unlock the secret to affordable purity with DrinkPrime! Why buy when you
-                    can rent our state-of-the-art water purifiers at a fraction of the cost?
-                    Enjoy continuous water quality monitoring with IoT technology, bid
-                    farewell to AMC charges, and enjoy our 5-star service. Elevate your
-                    hydration experience with DrinkPrime – where affordability meets water
-                    technology
+                <p className="text-sm text-black/60  md:text-base w-full   leading-[150%] lg:leading-[32px] mt-3 md:mt-4 !max-w-[920px]">
+                    Say goodbye to the hassle of buying and maintaining a water purifier. Aqua Home offers a smarter way to stay hydrated — a subscription-based water purifier service that puts convenience and savings first. With no hidden charges and reliable service, you get clean, healthy water without the usual worries.
                 </p>
             </div>
             <div className="mt-[40px] md:mt-[60px] w-full max-w-[830px] mx-auto">

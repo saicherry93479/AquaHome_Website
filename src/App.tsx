@@ -21,12 +21,16 @@ import Rent from "./components/Rent"
 import WhySection from "./components/WhySection"
 import FiltersShowcase from "./components/FiltersShowcase"
 import LoadingSpinner from "./components/LoadingSpinner"
+import PrivacyPolicies from './components/PrivacyPolicies';
+import TermsConditions from './components/TermsConditions';
+import CancellationRefundPolicy from './components/CancellationRefundPolicy';
+import FiltersShowcaseSample from './components/FilterShowcaseSample';
 
 const MainWebsite = () => {
   const { loading, products } = useData();
   
   // Filter only active products
-  const activeProducts = products.filter(product => product.isActive);
+  // const activeProducts = products.filter(product => product.isActive);
   
   if (loading) {
     return (
@@ -43,7 +47,8 @@ const MainWebsite = () => {
     <div className="nth-[2n+4]:bg-[#FAFAFA]">
       <Nav></Nav>
       <Hero></Hero>
-      {activeProducts.length > 0 && <FiltersShowcase></FiltersShowcase>}
+      <FiltersShowcaseSample></FiltersShowcaseSample>
+      {/* {activeProducts.length > 0 && <FiltersShowcase></FiltersShowcase>} */}
       <Plans></Plans>
       <Rent></Rent>
       {/* <SecondSection></SecondSection> */}
@@ -73,6 +78,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MainWebsite />} />
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicies></PrivacyPolicies>} />
+            <Route path="/termsconditions" element={<TermsConditions></TermsConditions>} />
+            <Route path="/cancellationrefundpoliese" element={<CancellationRefundPolicy></CancellationRefundPolicy>} />
             <Route 
               path="/admin" 
               element={

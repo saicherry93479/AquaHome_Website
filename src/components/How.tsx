@@ -8,10 +8,10 @@ const How = () => {
         >
             <div className="text-left md:text-center">
                 <h2 className="text-2xl md:text-4xl font-semibold capitalize lg:text-[40px] text-black">
-                    How to get DrinkPrime Subscription?
+                    How to get AquaHome Subscription?
                 </h2>
                 <p className="text-sm text-black/60 mt-3 md:mt-4 md:text-base">
-                    Get DrinkPrime RO water purifier in 4 easy steps
+                    Get AquaHome RO water purifier in 4 easy steps
                 </p>
             </div>
             <div className="hidden lg:block mt-[60px]">
@@ -89,13 +89,13 @@ const How = () => {
                             </div>
                             <div className="flex flex-col w-full items-center p-2 px-4">
                                 <img
-                                    alt="Get DrinkPrime Installed in 48 hours!"
+                                    alt="Get AquaHome Installed in 48 hours!"
                                     src="data:image/webp;base64,UklGRqADAABXRUJQVlA4WAoAAAAQAAAAUQAAUAAAQUxQSMcAAAABcBXbbtw8CIIgCIEgCIVgCGFgM0gYOAxSBoYQCIJgCOq++f03IiYAb1revcdv91aT4uOSe4za0mdkiaE9fcA8Rq/yTg6Crq/loOj6Sg6Srs9S0DzkkTqPWB7VYGp3FlTbXeUSBmiQXYHEpgM7m5jQ6cwSdNeJz9n4tP+FJj5n4bOi05mx05kws3FA2FQAjYwCMC4N942KPtBOpOBx4uF4Xli4voDCwRUvFwauePPkw62Ct3Ubyw0f1c2HaYbPW2nHr/lRk+B1AFZQOCCyAgAAMA8AnQEqUgBRAD6pUKNMJiSjIic4CbjAFQliAM36VT9eSmGSsP+kGKA/V31kPQfvF/oAeWv7KcxwEd0+1gMsnSTMziadnerETLNJulshxqyXDp7IpQicSf5WtEHtsGjwNrQSMasokTinJqNF3rlz05eFDac8Sp6pLud4zqk+utlgQAD+7CYXibSOz1f74XMwt8qgTuI9KYhbG+SSi//Ct0ZJfTalCDf+loRn9gxj36tZI7GLURfZAK/NWI6kLES2DRqg0vtEsMsbnEe8e1CiM3J9Pb9K9ieK+kCqZXVmGIh+mfNNJqR4GwamBlBDbBysd94hapIpjZi8HyB8QZFLwjyio1J3Sv+EIiw1aG1xPOKJIeLWhCAt+cj2R7i/sCbUKAORd7VP7OR27G9mrpVUu0f4QHR0L9tF9wzXTRgNm9GttMc6F7cAT0axilRwJ21ol0XZR0oLIGgv31PZ7yx6C8cgMny5jvemeOAHCTvd2G+fgP/BFavirAN4yR7fEM1ZSx91u1iv07/TXv+ZrLmf4o5ffwK4tI8SRCHfhyhXL3T+TeddlOOI6hnjC7LbwY2R9hHf2n2jDdDrIEQwcyiMzAX5a+CSvwK4gVCHViH1naajDZB6O0SvR/M1S63KY3t+tae2ZsH4yAHdbuf7yMEVIWlkWm7+xl6lI4DWj9ilD1Jo4361+MgfwGRRpqUZ35m+IBqWxsfPxIuQPW0O+06spGXm6OhDT13Ecpyq7VWGvnrpqDeJCYHw9DpJ/lsIUEbec2tBKTtDuUrcZeNNsq/KnzjGjad7lW1m8lk6gr0iEaxjXsl+a9+WHTP/ICQ5ZrAaPqmXU+I4blbs1iGTb5JPIfT1+v1qg5J6dsUr9XP//jXMXQC/Tl9FZgB5AYvgff/8eeZ4PF1Yyt/xdWLm2RnTaqgA"
                                     className="w-[72px] h-[72px]"
                                 />
                                 <div className="text-center mt-[24px]">
                                     <h4 className="text-base font-semibold capitalize max-w-[300px]">
-                                        Get DrinkPrime Installed in 48 hours!
+                                        Get AquaHome Installed in 48 hours!
                                     </h4>
                                 </div>
                                 <p className="text-sm text-black/60 text-center lg:mt-2 hidden">
@@ -190,12 +190,12 @@ const How = () => {
                             <div className="ml-8 -top-[25px] relative space-y-[12px]">
                                 <div className="flex items-center gap-[24px]">
                                     <img
-                                        alt="Get DrinkPrime Installed in 48 hours!"
+                                        alt="Get AquaHome Installed in 48 hours!"
                                         src="data:image/webp;base64,UklGRqADAABXRUJQVlA4WAoAAAAQAAAAUQAAUAAAQUxQSMcAAAABcBXbbtw8CIIgCIEgCIVgCGFgM0gYOAxSBoYQCIJgCOq++f03IiYAb1revcdv91aT4uOSe4za0mdkiaE9fcA8Rq/yTg6Crq/loOj6Sg6Srs9S0DzkkTqPWB7VYGp3FlTbXeUSBmiQXYHEpgM7m5jQ6cwSdNeJz9n4tP+FJj5n4bOi05mx05kws3FA2FQAjYwCMC4N942KPtBOpOBx4uF4Xli4voDCwRUvFwauePPkw62Ct3Ubyw0f1c2HaYbPW2nHr/lRk+B1AFZQOCCyAgAAMA8AnQEqUgBRAD6pUKNMJiSjIic4CbjAFQliAM36VT9eSmGSsP+kGKA/V31kPQfvF/oAeWv7KcxwEd0+1gMsnSTMziadnerETLNJulshxqyXDp7IpQicSf5WtEHtsGjwNrQSMasokTinJqNF3rlz05eFDac8Sp6pLud4zqk+utlgQAD+7CYXibSOz1f74XMwt8qgTuI9KYhbG+SSi//Ct0ZJfTalCDf+loRn9gxj36tZI7GLURfZAK/NWI6kLES2DRqg0vtEsMsbnEe8e1CiM3J9Pb9K9ieK+kCqZXVmGIh+mfNNJqR4GwamBlBDbBysd94hapIpjZi8HyB8QZFLwjyio1J3Sv+EIiw1aG1xPOKJIeLWhCAt+cj2R7i/sCbUKAORd7VP7OR27G9mrpVUu0f4QHR0L9tF9wzXTRgNm9GttMc6F7cAT0axilRwJ21ol0XZR0oLIGgv31PZ7yx6C8cgMny5jvemeOAHCTvd2G+fgP/BFavirAN4yR7fEM1ZSx91u1iv07/TXv+ZrLmf4o5ffwK4tI8SRCHfhyhXL3T+TeddlOOI6hnjC7LbwY2R9hHf2n2jDdDrIEQwcyiMzAX5a+CSvwK4gVCHViH1naajDZB6O0SvR/M1S63KY3t+tae2ZsH4yAHdbuf7yMEVIWlkWm7+xl6lI4DWj9ilD1Jo4361+MgfwGRRpqUZ35m+IBqWxsfPxIuQPW0O+06spGXm6OhDT13Ecpyq7VWGvnrpqDeJCYHw9DpJ/lsIUEbec2tBKTtDuUrcZeNNsq/KnzjGjad7lW1m8lk6gr0iEaxjXsl+a9+WHTP/ICQ5ZrAaPqmXU+I4blbs1iGTb5JPIfT1+v1qg5J6dsUr9XP//jXMXQC/Tl9FZgB5AYvgff/8eeZ4PF1Yyt/xdWLm2RnTaqgA"
                                         className="w-[54px] h-[54px]"
                                     />
                                     <h3 className="md:text-[24px]  text-[#000] text-base font-semibold max-w-[400px] leading-[20px] capitalize">
-                                        Get DrinkPrime Installed in 48 hours!
+                                        Get AquaHome Installed in 48 hours!
                                     </h3>
                                 </div>
                                 <p className="text-sm text-black/60 hidden">

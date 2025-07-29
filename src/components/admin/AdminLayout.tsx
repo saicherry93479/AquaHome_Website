@@ -44,7 +44,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
             <div className="flex-shrink-0 flex items-center px-4">
               <img
                 src="https://drinkprime.in/app/assets/DpLogoFooter-production.svg"
-                alt="DrinkPrime"
+                alt="AquaHome"
                 className="h-8 w-auto"
               />
             </div>
@@ -90,7 +90,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
             <div className="flex items-center flex-shrink-0 px-4">
               <img
                 src="https://drinkprime.in/app/assets/DpLogoFooter-production.svg"
-                alt="DrinkPrime"
+                alt="AquaHome"
                 className="h-8 w-auto"
               />
             </div>
