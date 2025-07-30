@@ -25,6 +25,7 @@ import PrivacyPolicies from './components/PrivacyPolicies';
 import TermsConditions from './components/TermsConditions';
 import CancellationRefundPolicy from './components/CancellationRefundPolicy';
 import FiltersShowcaseSample from './components/FilterShowcaseSample';
+import ContactUs from './components/contactus';
 
 const MainWebsite = () => {
   const { loading } = useData();
@@ -80,6 +81,7 @@ const App = () => {
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/privacypolicy" element={<PrivacyPolicies></PrivacyPolicies>} />
             <Route path="/termsconditions" element={<TermsConditions></TermsConditions>} />
+            <Route path="/contactus" element={<ContactUs></ContactUs>} />
             <Route path="/cancellationrefundpoliese" element={<CancellationRefundPolicy></CancellationRefundPolicy>} />
             <Route 
               path="/admin" 
