@@ -53,17 +53,12 @@ const Footer = () => {
                     </div>
 
                 </div>
-                {/* <div>
-                    <h3 className="text-yellow text-xl font-semibold mb-[16px] cursor-pointer text-[#E0FF22]">
+                <div>
+                    <a href="/contactus" className="text-yellow text-xl font-semibold mb-[16px] cursor-pointer text-[#E0FF22]">
                         Contact Us
-                    </h3>
-                    <div
-                        id="FAQs"
-                        className="text-white font-medium mt-[14px] cursor-pointer block"
-                    >
-                        FAQs
-                    </div>
-                </div> */}
+                    </a>
+                   
+                </div>
                 <div>
                     <h3 className="text-yellow text-xl font-semibold mb-[16px] text-[#E0FF22]">Terms</h3>
                     <a
