@@ -25,7 +25,7 @@ import PrivacyPolicies from './components/PrivacyPolicies';
 import TermsConditions from './components/TermsConditions';
 import CancellationRefundPolicy from './components/CancellationRefundPolicy';
 import FiltersShowcaseSample from './components/FilterShowcaseSample';
-import ContactUs from './components/contactus';
+import ContactUs from './components/Contactus.tsx';
 
 const MainWebsite = () => {
   const { loading } = useData();
