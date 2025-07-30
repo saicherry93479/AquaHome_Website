@@ -54,10 +54,15 @@ const Footer = () => {
 
                 </div>
                 <div>
-                    <a href="/contactus" className="text-yellow text-xl font-semibold mb-[16px] cursor-pointer text-[#E0FF22]">
+                    <h3 className="text-yellow text-xl font-semibold mb-[16px] cursor-pointer text-[#E0FF22]">
+                        Contact 
+                    </h3>
+                    <a
+                        href="/contactus"
+                        className="text-white font-medium mt-[14px] cursor-pointer block"
+                    >
                         Contact Us
                     </a>
-                   
                 </div>
                 <div>
                     <h3 className="text-yellow text-xl font-semibold mb-[16px] text-[#E0FF22]">Terms</h3>
