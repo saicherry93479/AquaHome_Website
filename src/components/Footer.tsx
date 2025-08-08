@@ -12,7 +12,7 @@ const Footer = () => {
                     Smart Purifiers on Rent. Free Maintenance for Life.
                 </h3>
                 <p className="text-white mt-3 text-xs font-medium leading-[20px]">
-                    Jyothi Traders, opp. municipal office, miryalaguda road, huzurnagar - 508204
+                JYOTHI TRADERS, 10-89/4,Girls High school Road, Beside Ranga thetare, Azadnagar, Kodad, 508206
                 </p>
                 <div className="hidden lg:block mt-[86px] md:max-w-[265px]">
                     <div className="flex items-center gap-4">

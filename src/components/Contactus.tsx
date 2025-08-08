@@ -51,7 +51,7 @@ const ContactUs = () => {
             Main Office
           </h3>
           <p className="text-[#0A0A0A] text-base">
-          Jyothi Traders, opp. municipal office, miryalaguda road, huzurnagar - 508204
+          JYOTHI TRADERS, 10-89/4,Girls High school Road, Beside Ranga thetare, Azadnagar, Kodad,508206
           </p>
         </div>
         <div className="mb-[47.6px]">

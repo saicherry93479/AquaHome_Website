@@ -10,7 +10,7 @@ const Plans = () => {
                 {
                     type: 'unlimited Plan',
                     duration: '360 days',
-                    price: '₹299/mo',
+                    price: '₹354/mo',
                     litres: 'unlimited',
                     discount: '22',
                     savings: '₹ 1389',
@@ -19,7 +19,7 @@ const Plans = () => {
                 {
                     type: 'unlimited Plan',
                     duration: '360 days',
-                    price: '₹299/mo',
+                    price: '₹415/mo',
                     litres: 'unlimited',
                     discount: '22',
                     savings: '₹ 1737',
@@ -138,9 +138,14 @@ const Plans = () => {
                                         <div className="text-xl font-bold text-[#4548b9]">
                                             {plan.duration.split(' ')[0]}<span className="text-xl"> {plan.duration.split(' ')[1]}</span>
                                         </div>
-                                        <h3 className="text-lg text-black font-bold justify-self-end">
-                                            {plan.price}
-                                        </h3>
+                                        <div className="text-right flex flex-col items-end">
+                                            <h3 className="text-lg text-black font-bold">
+                                                {plan.price}
+                                            </h3>
+                                            <p className="text-[8px] text-gray-600 italic font-bold">
+                                                included GST
+                                            </p>
+                                        </div>
                                         <h3 className="text-sm flex items-center gap-1 capitalize font-semibold">
                                             <img
                                                 src="data:image/svg+xml,%3csvg%20width='18'%20height='18'%20viewBox='0%200%2018%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8.92164%2016.1993C8.1315%2016.1926%207.3507%2016.0277%206.62528%2015.7145C5.89986%2015.4012%205.24449%2014.9459%204.6978%2014.3754C3.58788%2013.211%202.97538%2011.6599%202.99032%2010.0513C3.00525%208.44274%203.64644%206.9033%204.7778%205.75972L8.48965%202.03987C8.56199%201.962%208.65001%201.90035%208.74791%201.85898C8.84582%201.81761%208.95137%201.79747%209.05763%201.79988C9.16404%201.80136%209.26908%201.82405%209.36661%201.86663C9.46414%201.90922%209.55219%201.97083%209.62561%202.04787L13.2735%205.82372C14.3845%206.98707%2014.9984%208.53757%2014.9849%2010.1461C14.9715%2011.7547%2014.3317%2013.2947%2013.2015%2014.4394C12.6448%2015.0077%2011.9783%2015.4568%2011.2425%2015.7594C10.5067%2016.0619%209.71709%2016.2116%208.92164%2016.1993Z'%20fill='url(%23paint0_linear_701_4419)'/%3e%3cpath%20d='M11.9043%2010.936C11.9043%2011.9039%2010.4523%2013.3559%209.48438%2013.3559'%20stroke='white'%20stroke-width='0.96797'%20stroke-linecap='round'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_701_4419'%20x1='5.49982'%20y1='2.5'%20x2='13.4998'%20y2='16.5'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%239AE7FD'/%3e%3cstop%20offset='1'%20stop-color='%23058EFA'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"
@@ -177,32 +182,6 @@ const Plans = () => {
                         Get A Call Back
                     </a>
                     
-                </div>
-
-                <div className="w-full flex md:justify-center">
-                    <div className="w-full mx-auto max-w-[430px] mt-6 max-h-10 px-2 md:px-5 py-2 bg-neutral-50 rounded-[100px] border border-slate-200 justify-center items-center gap-2 inline-flex">
-                        <div className="w-[15px] h-[15px] md:w-[15px] md:h-[15px] relative top-[1px]">
-                            <img
-                                alt="info"
-                                src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='15'%20height='15'%20viewBox='0%200%2015%2015'%20fill='none'%3e%3cpath%20d='M7.49982%2014.3727C11.2654%2014.3727%2014.318%2011.3201%2014.318%207.55451C14.318%203.78893%2011.2654%200.736328%207.49982%200.736328C3.73424%200.736328%200.681641%203.78893%200.681641%207.55451C0.681641%2011.3201%203.73424%2014.3727%207.49982%2014.3727Z'%20stroke='black'%20stroke-opacity='0.6'%20stroke-width='1.25'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M7.5%2010.625V8.125'%20stroke='black'%20stroke-opacity='0.6'%20stroke-width='1.875'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M7.5%204.82812H7.50655'%20stroke='black'%20stroke-opacity='0.6'%20stroke-width='1.875'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
-                            />
-                        </div>
-                        <div className="font-normal">
-                            <span className="text-black md:text-gray-600 text-xs md:text-[15px]">
-                                Security deposit of{" "}
-                            </span>
-                            <span className="text-black md:text-gray-600 text-xs md:text-[15px] font-medium">
-                                ₹2,000
-                            </span>
-                            <span className="text-black md:text-gray-600 text-xs md:text-[15px]">
-                                {" "}
-                                will be{" "}
-                            </span>
-                            <span className="text-green-800 text-xs md:text-[15px] font-bold md:font-semibold leading-normal">
-                                100% refundable
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
