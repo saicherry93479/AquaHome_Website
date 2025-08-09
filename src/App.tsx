@@ -26,6 +26,7 @@ import TermsConditions from './components/TermsConditions';
 import CancellationRefundPolicy from './components/CancellationRefundPolicy';
 import FiltersShowcaseSample from './components/FilterShowcaseSample';
 import ContactUs from './components/Contactus.tsx';
+import SocialMediaWidget from './components/SocialMediaWidget';
 
 const MainWebsite = () => {
   const { loading } = useData();
@@ -76,6 +77,7 @@ const App = () => {
     <AuthProvider>
       <DataProvider>
         <Router>
+          <SocialMediaWidget />
           <Routes>
             <Route path="/" element={<MainWebsite />} />
             <Route path="/admin/login" element={<AdminLogin />} />
